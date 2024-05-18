@@ -21,39 +21,39 @@ body {
 nav {
   display: block;
   height: 50px;
+  background-color: #333;
 }
 
-nav ul {
+nav .nav-items ul {
   list-style-type: none;
   height: 100%;
   padding: 0;
   display: flex;
   justify-content: center;
-  background-color: #333;
 }
 
-nav ul li {
+nav .nav-items ul li {
   margin: 0;
 }
 
-nav ul #menu-mobile {
+nav #menu-mobile {
   display: none;
 }
 
-nav ul #menu-mobile img {
+nav #menu-mobile img {
   height: 40px;
   width: 40px;
   margin: 0.5rem;
 }
 
-nav ul li a {
+nav .nav-items ul li a {
   display: block;
   padding: 1rem;
   color: white;
   text-decoration: none;
 }
 
-nav ul li a:hover {
+nav .nav-items ul li a:hover {
   background-color: #111;
 }
 
@@ -67,6 +67,7 @@ nav ul li a:hover {
   z-index: -1;
   top: -300px; /* pixelvalue should be replaced in production for more dynamic behaviour -> same in animation */
   left: 0;
+  visibility: hidden;
   overflow: hidden;
   padding: 1rem;
 }
@@ -82,10 +83,12 @@ nav ul li a:hover {
 
 @keyframes slideIn {
   0% {
+    visibility: visible;
     top: -300px;
     left: 0;
   }
   100% {
+    visibility: visible;
     top: 150px;
     left: 0px;
   }
@@ -105,6 +108,15 @@ nav ul li a:hover {
   flex-direction: column;
 }
 
+#content #products .container .toggle {
+  color: blue;
+}
+
+#content #products .container .toggle .icon-main,
+#content #products .container ul .icon-secondary {
+  display: none;
+}
+
 #content #products .container ul {
   font-weight: bold;
 }
@@ -117,15 +129,38 @@ nav ul li a:hover {
 /* Media Query */
 
 @media (max-width: 550px) {
-  nav ul li {
+  nav .nav-items ul li {
     display: none;
   }
 
-  nav ul #menu-mobile {
+  nav #menu-mobile {
     width: 100%;
     height: auto;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+  }
+
+  #content #products {
+    grid-template-columns: 1fr;
+  }
+
+  #content #products .container {
+    align-items: start;
+  }
+
+  #content #products .container .toggle .icon-main,
+  #content #products .container ul .icon-secondary {
+    display: inline-block;
+  }
+  #content #products .container .toggle .icon-main {
+    height: 20px;
+    width: 20px;
+    color: blue;
+  }
+
+  #content #products .container ul .icon-secondary {
+    height: 15px;
+    width: 15px;
   }
 }
