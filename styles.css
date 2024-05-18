@@ -36,6 +36,16 @@ nav ul li {
   margin: 0;
 }
 
+nav ul #menu-mobile {
+  display: none;
+}
+
+nav ul #menu-mobile img {
+  height: 40px;
+  width: 40px;
+  margin: 0.5rem;
+}
+
 nav ul li a {
   display: block;
   padding: 1rem;
@@ -55,7 +65,7 @@ nav ul li a:hover {
 #content section {
   position: absolute;
   z-index: -1;
-  top: -1000px;
+  top: -300px; /* pixelvalue should be replaced in production for more dynamic behaviour -> same in animation */
   left: 0;
   overflow: hidden;
   padding: 1rem;
@@ -72,7 +82,7 @@ nav ul li a:hover {
 
 @keyframes slideIn {
   0% {
-    top: -1000px;
+    top: -300px;
     left: 0;
   }
   100% {
@@ -102,4 +112,20 @@ nav ul li a:hover {
 #content #products .container ul li {
   list-style: none;
   font-weight: 500;
+}
+
+/* Media Query */
+
+@media (max-width: 550px) {
+  nav ul li {
+    display: none;
+  }
+
+  nav ul #menu-mobile {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
 }

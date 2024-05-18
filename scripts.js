@@ -1,5 +1,6 @@
 "use strict";
 
+// eventlistener for active link styling
 const navItems = document.querySelectorAll(".nav-link");
 console.log(navItems);
 
