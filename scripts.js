@@ -7,6 +7,12 @@ navItems.forEach((navItem) => {
   navItem.addEventListener("click", (e) => {
     navItems.forEach((item) => item.classList.remove("active"));
     navItem.classList.add("active");
+
+    // check viewport if in mobile view, if so close link container again after selection
+    if (window.matchMedia("(max-width: 550px)").matches) {
+      navItemContainer.classList.remove("open");
+      navItemContainer.classList.add("close");
+    }
   });
 });
 
