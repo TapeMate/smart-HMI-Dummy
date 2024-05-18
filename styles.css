@@ -47,13 +47,18 @@ nav ul li a:hover {
   background-color: #111;
 }
 
+/* active link class for JavaScript */
+.active {
+  background-color: #111;
+}
+
 #content section {
   position: absolute;
   z-index: -1;
   top: -1000px;
   left: 0;
   overflow: hidden;
-  padding: 20px;
+  padding: 1rem;
 }
 
 #content section:target {
@@ -61,10 +66,6 @@ nav ul li a:hover {
   width: 100%;
   background: tomato;
   animation: 0.5s forwards slideIn;
-}
-
-#content section .container {
-  padding-left: 1rem;
 }
 
 /* dummy animation for testing */
@@ -89,6 +90,8 @@ nav ul li a:hover {
 
 #content #products .container {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
 
