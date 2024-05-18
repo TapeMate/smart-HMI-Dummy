@@ -23,3 +23,21 @@ toggleIcon.addEventListener("click", (e) => {
     navItemContainer.classList.add("close");
   }
 });
+
+// media query check to prevent navbar items stay hidden when moving back to desktop view
+const mediaQueryCheck = (e) => {
+  if (e.matches) {
+    navItemContainer.classList.remove("open");
+    navItemContainer.classList.add("close");
+  } else {
+    navItemContainer.classList.add("open");
+    navItemContainer.classList.remove("close");
+  }
+};
+
+// media query object and listener
+const mediaQuery = window.matchMedia("(max-width: 550px)");
+mediaQuery.addEventListener("change", mediaQueryCheck);
+
+// initial check
+mediaQueryCheck(mediaQuery);
