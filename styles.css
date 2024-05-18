@@ -23,6 +23,7 @@ nav {
 
 nav ul {
   list-style-type: none;
+  height: 100%;
   padding: 0;
   display: flex;
   background-color: #333;
@@ -34,7 +35,7 @@ nav ul li {
 
 nav ul li a {
   display: block;
-  padding: 14px 20px;
+  padding: 1rem;
   color: white;
   text-decoration: none;
 }
@@ -46,7 +47,7 @@ nav ul li a:hover {
 #content section {
   position: absolute;
   z-index: -1;
-  top: 0;
+  top: -1000px;
   left: 0;
   overflow: hidden;
   padding: 20px;
@@ -63,11 +64,22 @@ nav ul li a:hover {
 
 @keyframes slideIn {
   0% {
-    top: 0;
+    top: -1000px;
     left: 0;
   }
   100% {
     top: 150px;
     left: 0px;
   }
+}
+
+/* in dev */
+#content #products {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+#content #products .container {
+  display: flex;
+  flex-direction: column;
 }
