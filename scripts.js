@@ -11,7 +11,7 @@ navItems.forEach((navItem) => {
 });
 
 // toggle menu mobile open close
-const toggleIcon = document.querySelector("#menu-mobile");
+const toggleIcon = document.querySelector("#toggle-items");
 const navItemContainer = document.querySelector(".nav-items");
 
 toggleIcon.addEventListener("click", (e) => {

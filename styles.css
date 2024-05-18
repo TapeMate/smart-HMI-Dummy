@@ -36,11 +36,17 @@ nav .nav-items ul li {
   margin: 0;
 }
 
-nav #menu-mobile {
+nav .menu-container {
+  display: flex;
+}
+
+nav #menu-mobile,
+nav #toggle-items {
   display: none;
 }
 
-nav #menu-mobile img {
+nav #menu-mobile img,
+nav #toggle-items img {
   height: 30px;
   width: 30px;
   margin: 10px;
@@ -150,7 +156,8 @@ nav .nav-items ul li a:hover {
     font-size: 1rem;
   }
 
-  nav #menu-mobile {
+  nav #menu-mobile,
+  nav #toggle-items {
     width: 50px;
     height: 50px;
     display: flex;
@@ -158,7 +165,8 @@ nav .nav-items ul li a:hover {
     align-items: center;
   }
 
-  nav #menu-mobile:hover img {
+  nav #menu-mobile:hover img,
+  nav #toggle-items:hover img {
     background: red;
   }
 
