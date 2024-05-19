@@ -92,6 +92,7 @@ const toggleEventListener = () => {
 };
 
 // option minimized function to controll initial mobile view with all options collapsed
+// NEEDS REFACTORING!
 const setOptionsMinimized = (bool) => {
   if (bool === true) {
     toggleSubHeader.forEach((subHeader) => {
@@ -102,6 +103,14 @@ const setOptionsMinimized = (bool) => {
       item.classList.remove("expand");
       item.classList.add("collapse");
     });
+    iconsMain.forEach((icon) => {
+      icon.classList.remove("toggle-open");
+      icon.classList.add("toggle-closed");
+    });
+    iconsSecondary.forEach((icon) => {
+      icon.classList.remove("toggle-open");
+      icon.classList.add("toggle-closed");
+    });
   } else if (bool === false) {
     toggleSubHeader.forEach((subHeader) => {
       subHeader.classList.remove("collapse");
@@ -110,6 +119,14 @@ const setOptionsMinimized = (bool) => {
     menuItems.forEach((item) => {
       item.classList.remove("collapse");
       item.classList.add("expand");
+    });
+    iconsMain.forEach((icon) => {
+      icon.classList.remove("toggle-closed");
+      icon.classList.add("toggle-open");
+    });
+    iconsSecondary.forEach((icon) => {
+      icon.classList.remove("toggle-closed");
+      icon.classList.add("toggle-open");
     });
   }
 };
