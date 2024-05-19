@@ -11,7 +11,7 @@ const menuItems = document.querySelectorAll(".menu-item");
 const iconsMain = document.querySelectorAll(".icon-main");
 const iconsSecondary = document.querySelectorAll(".icon-secondary");
 
-// toggleClasses helper function
+// helper function for toggle class
 const toggleClasses = (elements, ...classNames) => {
   elements.forEach((element) => {
     classNames.forEach((className) => {
@@ -35,29 +35,16 @@ navItems.forEach((navItem) => {
 
 // toggle menu mobile open close
 toggleItemsIcon.addEventListener("click", () => {
+  // needs "[ ]" to pack single Node into Array to fit helper function
   toggleClasses([navItemContainer], "close", "open");
-  //   navItemContainer.classList.toggle("close");
-  //   navItemContainer.classList.toggle("open");
 });
 
 // add expand / collapse all items function to mobile menu icon
 toggleOptionsIcon.addEventListener("click", (e) => {
-  toggleSubHeader.forEach((subHeader) => {
-    subHeader.classList.toggle("expand");
-    subHeader.classList.toggle("collapse");
-  });
-  menuItems.forEach((item) => {
-    item.classList.toggle("expand");
-    item.classList.toggle("collapse");
-  });
-  iconsMain.forEach((icon) => {
-    icon.classList.toggle("toggle-closed");
-    icon.classList.toggle("toggle-open");
-  });
-  iconsSecondary.forEach((icon) => {
-    icon.classList.toggle("toggle-closed");
-    icon.classList.toggle("toggle-open");
-  });
+  toggleClasses(toggleSubHeader, "expand", "collapse");
+  toggleClasses(menuItems, "expand", "collapse");
+  toggleClasses(iconsMain, "toggle-closed", "toggle-open");
+  toggleClasses(iconsSecondary, "toggle-closed", "toggle-open");
 });
 
 // make mobile product menu expand and collapse
@@ -66,13 +53,11 @@ const toggleMenu = (e) => {
   const icon = header.querySelector("img");
   let sibling = header.nextElementSibling;
   while (sibling && sibling.classList.contains("toggle-sub")) {
-    sibling.classList.toggle("collapse");
-    sibling.classList.toggle("expand");
+    toggleClasses([sibling], "collapse", "expand");
     sibling = sibling.nextElementSibling;
   }
   // rotate toggle icon
-  icon.classList.toggle("toggle-closed");
-  icon.classList.toggle("toggle-open");
+  toggleClasses([icon], "toggle-closed", "toggle-open");
 };
 
 // event handler function for sub header
@@ -80,13 +65,9 @@ const toggleSubMenu = (e) => {
   const subHeader = e.currentTarget;
   const icon = subHeader.querySelector("img");
   const children = subHeader.querySelectorAll("li");
-  children.forEach((child) => {
-    child.classList.toggle("collapse");
-    child.classList.toggle("expand");
-  });
+  toggleClasses(children, "collapse", "expand");
   // rotate toggle icon
-  icon.classList.toggle("toggle-open");
-  icon.classList.toggle("toggle-closed");
+  toggleClasses([icon], "toggle-closed", "toggle-open");
 };
 
 // media query check to add / remove event listener
