@@ -20,6 +20,21 @@ const toggleClasses = (elements, ...classNames) => {
   });
 };
 
+// minimizeOption helper function
+const isOptionsMinimized = (elements, firstClass, secondClass, bool) => {
+  if (bool) {
+    elements.forEach((element) => {
+      element.classList.remove(firstClass);
+      element.classList.add(secondClass);
+    });
+  } else if (!bool) {
+    elements.forEach((element) => {
+      element.classList.remove(secondClass);
+      element.classList.add(firstClass);
+    });
+  }
+};
+
 // eventlistener for active link styling due to css gets overwritten via hover effect
 navItems.forEach((navItem) => {
   navItem.addEventListener("click", (e) => {
@@ -88,21 +103,6 @@ const toggleEventListener = () => {
       subHeader.removeEventListener("click", toggleSubMenu);
     });
     setOptionsMinimized(false);
-  }
-};
-
-// minimizeOption helper function
-const isOptionsMinimized = (elements, firstClass, secondClass, bool) => {
-  if (bool) {
-    elements.forEach((element) => {
-      element.classList.remove(firstClass);
-      element.classList.add(secondClass);
-    });
-  } else if (!bool) {
-    elements.forEach((element) => {
-      element.classList.remove(secondClass);
-      element.classList.add(firstClass);
-    });
   }
 };
 
