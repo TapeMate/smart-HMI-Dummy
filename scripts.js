@@ -135,3 +135,15 @@ mediaQuery.addEventListener("change", mediaQueryCheck);
 
 // initial check
 mediaQueryCheck(mediaQuery);
+
+// ################
+// FETCH JSON DATA
+// ################
+
+fetch("data.json")
+  .then((response) => response.json())
+  .then((data) => {
+    document.querySelector("#test1").textContent = data.test1;
+    document.querySelector("#test2").textContent = data.test2;
+  })
+  .catch((error) => console.error("Error fetching data:", error));
