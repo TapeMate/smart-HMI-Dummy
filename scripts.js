@@ -143,7 +143,100 @@ mediaQueryCheck(mediaQuery);
 fetch("data.json")
   .then((response) => response.json())
   .then((data) => {
-    document.querySelector("#test1").textContent = data.test1;
-    document.querySelector("#test2").textContent = data.test2;
+    // header
+    document.querySelector("#header1").textContent = data.group1.header;
+    document.querySelector("#header2").textContent = data.group2.header;
+    document.querySelector("#header3").textContent = data.group3.header;
+    // subHeader
+    document.querySelector("#sub-header1").textContent =
+      data.group1.secondary1.header;
+    document.querySelector("#sub-header2").textContent =
+      data.group1.secondary2.header;
+    document.querySelector("#sub-header3").textContent =
+      data.group1.secondary3.header;
+
+    document.querySelector("#sub-header4").textContent =
+      data.group2.secondary1.header;
+    document.querySelector("#sub-header5").textContent =
+      data.group2.secondary2.header;
+    document.querySelector("#sub-header6").textContent =
+      data.group2.secondary3.header;
+
+    document.querySelector("#sub-header7").textContent =
+      data.group3.secondary1.header;
+    document.querySelector("#sub-header8").textContent =
+      data.group3.secondary2.header;
+    document.querySelector("#sub-header9").textContent =
+      data.group3.secondary3.header;
+
+    // items
+    document.querySelector("#item01").textContent =
+      data.group1.secondary1.item1;
+    document.querySelector("#item02").textContent =
+      data.group1.secondary1.item2;
+
+    document.querySelector("#item03").textContent =
+      data.group1.secondary2.item1;
+    document.querySelector("#item04").textContent =
+      data.group1.secondary2.item2;
+    document.querySelector("#item05").textContent =
+      data.group1.secondary2.item3;
+    document.querySelector("#item06").textContent =
+      data.group1.secondary2.item4;
+
+    document.querySelector("#item07").textContent =
+      data.group1.secondary3.item1;
+    document.querySelector("#item08").textContent =
+      data.group1.secondary3.item2;
+    document.querySelector("#item09").textContent =
+      data.group1.secondary3.item3;
+    document.querySelector("#item10").textContent =
+      data.group1.secondary3.item4;
+
+    document.querySelector("#item11").textContent =
+      data.group2.secondary1.item1;
+    document.querySelector("#item12").textContent =
+      data.group2.secondary1.item2;
+
+    document.querySelector("#item13").textContent =
+      data.group2.secondary2.item1;
+    document.querySelector("#item14").textContent =
+      data.group2.secondary2.item2;
+    document.querySelector("#item15").textContent =
+      data.group2.secondary2.item3;
+    document.querySelector("#item16").textContent =
+      data.group2.secondary2.item4;
+
+    document.querySelector("#item17").textContent =
+      data.group2.secondary3.item1;
+    document.querySelector("#item18").textContent =
+      data.group2.secondary3.item2;
+    document.querySelector("#item19").textContent =
+      data.group2.secondary3.item3;
+    document.querySelector("#item20").textContent =
+      data.group2.secondary3.item4;
+
+    document.querySelector("#item21").textContent =
+      data.group3.secondary1.item1;
+    document.querySelector("#item22").textContent =
+      data.group3.secondary1.item2;
+
+    document.querySelector("#item23").textContent =
+      data.group3.secondary2.item1;
+    document.querySelector("#item24").textContent =
+      data.group3.secondary2.item2;
+    document.querySelector("#item25").textContent =
+      data.group3.secondary2.item3;
+    document.querySelector("#item26").textContent =
+      data.group3.secondary2.item4;
+
+    document.querySelector("#item27").textContent =
+      data.group3.secondary3.item1;
+    document.querySelector("#item28").textContent =
+      data.group3.secondary3.item2;
+    document.querySelector("#item29").textContent =
+      data.group3.secondary3.item3;
+    document.querySelector("#item30").textContent =
+      data.group3.secondary3.item4;
   })
   .catch((error) => console.error("Error fetching data:", error));
