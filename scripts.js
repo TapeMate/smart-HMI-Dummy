@@ -93,6 +93,29 @@ const toggleSubContent = (e) => {
   }
 };
 
+// option minimized function to controll initial mobile view with all options collapsed
+const setOptionsMinimized = (bool) => {
+  if (bool === true) {
+    toggleSubHeader.forEach((subHeader) => {
+      subHeader.classList.remove("expand");
+      subHeader.classList.add("collapse");
+    });
+    menuItems.forEach((item) => {
+      item.classList.remove("expand");
+      item.classList.add("collapse");
+    });
+  } else if (bool === false) {
+    toggleSubHeader.forEach((subHeader) => {
+      subHeader.classList.remove("collapse");
+      subHeader.classList.add("expand");
+    });
+    menuItems.forEach((item) => {
+      item.classList.remove("collapse");
+      item.classList.add("expand");
+    });
+  }
+};
+
 // media query check to add / remove event listener
 const toggleEventListener = () => {
   if (window.matchMedia("(max-width: 550px)").matches) {
@@ -102,6 +125,7 @@ const toggleEventListener = () => {
     toggleSubHeader.forEach((subHeader) => {
       subHeader.addEventListener("click", toggleSubContent);
     });
+    setOptionsMinimized(true);
   } else {
     toggleHeader.forEach((header) => {
       header.removeEventListener("click", toggleContent);
@@ -109,6 +133,7 @@ const toggleEventListener = () => {
     toggleSubHeader.forEach((subHeader) => {
       subHeader.removeEventListener("click", toggleSubContent);
     });
+    setOptionsMinimized(false);
   }
 };
 
