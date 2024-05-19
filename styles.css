@@ -40,17 +40,17 @@ nav .menu-container {
   display: flex;
 }
 
-nav #menu-mobile,
+nav #toggle-options,
 nav #toggle-items {
   display: none;
 }
 
-nav #menu-mobile img,
+/* nav #toggle-options img,
 nav #toggle-items img {
   height: 30px;
   width: 30px;
   margin: 10px;
-}
+} */
 
 nav .nav-items ul li a {
   display: block;
@@ -122,6 +122,13 @@ nav .nav-items ul li a:hover {
   transition: all 0.5s;
 }
 
+#toggle-options {
+  background-image: url(assets/toggle-all-options.svg);
+  background-size: calc(50px - 20%);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 /* in dev */
 
 #content #products {
@@ -171,7 +178,7 @@ nav .nav-items ul li a:hover {
     font-size: 1rem;
   }
 
-  nav #menu-mobile,
+  nav #toggle-options,
   nav #toggle-items {
     width: 50px;
     height: 50px;
@@ -180,10 +187,10 @@ nav .nav-items ul li a:hover {
     align-items: center;
   }
 
-  nav #menu-mobile:hover img,
+  /* nav #toggle-options:hover img,
   nav #toggle-items:hover img {
     background: red;
-  }
+  } */
 
   #content #products {
     grid-template-columns: 1fr;

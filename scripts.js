@@ -17,10 +17,10 @@ navItems.forEach((navItem) => {
 });
 
 // toggle menu mobile open close
-const toggleIcon = document.querySelector("#toggle-items");
+const toggleItemsIcon = document.querySelector("#toggle-items");
 const navItemContainer = document.querySelector(".nav-items");
 
-toggleIcon.addEventListener("click", (e) => {
+toggleItemsIcon.addEventListener("click", (e) => {
   if (navItemContainer.classList.contains("close")) {
     navItemContainer.classList.remove("close");
     navItemContainer.classList.add("open");
@@ -28,6 +28,13 @@ toggleIcon.addEventListener("click", (e) => {
     navItemContainer.classList.remove("open");
     navItemContainer.classList.add("close");
   }
+});
+
+// add expand / collapse all function to mobile menu icon
+const toggleOptionsIcon = document.querySelector("#toggle-options");
+
+toggleOptionsIcon.addEventListener("click", (e) => {
+  console.log("click");
 });
 
 // make mobile product menu expand and collapse
