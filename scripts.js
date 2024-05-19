@@ -144,7 +144,7 @@ fetch("data.json")
   .then((response) => response.json())
   .then((data) => {
     const keysArr = Object.keys(data);
-    console.log(keysArr);
+    let subHeaderCount = 1;
 
     // header
     for (let i = 0; i < keysArr.length; i++) {
@@ -153,27 +153,14 @@ fetch("data.json")
     }
 
     // subHeader
-
-    // document.querySelector("#sub-header1").textContent =
-    //   data.group1.secondary1.header;
-    // document.querySelector("#sub-header2").textContent =
-    //   data.group1.secondary2.header;
-    // document.querySelector("#sub-header3").textContent =
-    //   data.group1.secondary3.header;
-
-    // document.querySelector("#sub-header4").textContent =
-    //   data.group2.secondary1.header;
-    // document.querySelector("#sub-header5").textContent =
-    //   data.group2.secondary2.header;
-    // document.querySelector("#sub-header6").textContent =
-    //   data.group2.secondary3.header;
-
-    // document.querySelector("#sub-header7").textContent =
-    //   data.group3.secondary1.header;
-    // document.querySelector("#sub-header8").textContent =
-    //   data.group3.secondary2.header;
-    // document.querySelector("#sub-header9").textContent =
-    //   data.group3.secondary3.header;
+    for (let i = 0; i < keysArr.length; i++) {
+      const subHeadersArr = data[keysArr[i]].subHeaders;
+      subHeadersArr.forEach((subHeader) => {
+        document.querySelector(`#sub-header${subHeaderCount}`).textContent =
+          subHeader;
+        subHeaderCount++;
+      });
+    }
 
     // items
     // group 1
