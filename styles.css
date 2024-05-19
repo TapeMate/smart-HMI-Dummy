@@ -109,6 +109,21 @@ nav .nav-items ul li a:hover {
 }
 
 /* in dev */
+
+.collapse {
+  max-height: 0px;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+
+.expand {
+  max-height: 100px;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+
+/* in dev */
+
 #content #products {
   padding: 1rem;
   display: grid;
