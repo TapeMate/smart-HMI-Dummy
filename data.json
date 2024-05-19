@@ -1,28 +1,6 @@
 {
     "group1": {
         "header": "HMIeasy",
-        "secondary1": {
-            "header": "Starter Packages",
-            "item1": "Package 1",
-            "item2": "Package 2"
-        },
-        "secondary2": {
-            "header": "Startup Tools",
-            "item1": "Tool 1",
-            "item2": "Tool 2",
-            "item3": "Tool 3",
-            "item4": "Tool 4"
-        },
-        "secondary3": {
-            "header": "Ultra Easy Packages",
-            "item1": "Package 1",
-            "item2": "Package 2",
-            "item3": "Package 3",
-            "item4": "Package 4"
-        }
-    },
-    "group1a": {
-        "header": "HMIeasy",
         "subHeaders": [
             "Starter Packages",
             "Startup Tools",
@@ -49,46 +27,54 @@
     },
     "group2": {
         "header": "HMIpro",
-        "secondary1": {
-            "header": "Starter Packages",
-            "item1": "Package 1",
-            "item2": "Package 2"
-        },
-        "secondary2": {
-            "header": "Startup Tools",
-            "item1": "Tool 1",
-            "item2": "Tool 2",
-            "item3": "Tool 3",
-            "item4": "Tool 4"
-        },
-        "secondary3": {
-            "header": "Ultra Easy Packages",
-            "item1": "Package 1",
-            "item2": "Package 2",
-            "item3": "Package 3",
-            "item4": "Package 4"
-        }
+        "subHeaders": [
+            "Starter Packages",
+            "Startup Tools",
+            "Ultra Easy Packages"
+        ],
+        "items": [
+            [
+                "Package 1",
+                "Package 2"
+            ],
+            [
+                "Tool 1",
+                "Tool 2",
+                "Tool 3",
+                "Tool 4"
+            ],
+            [
+                "Package 1",
+                "Package 2",
+                "Package 3",
+                "Package 4"
+            ]
+        ]
     },
     "group3": {
         "header": "HMIenterprise",
-        "secondary1": {
-            "header": "Starter Packages",
-            "item1": "Package 1",
-            "item2": "Package 2"
-        },
-        "secondary2": {
-            "header": "Startup Tools",
-            "item1": "Tool 1",
-            "item2": "Tool 2",
-            "item3": "Tool 3",
-            "item4": "Tool 4"
-        },
-        "secondary3": {
-            "header": "Ultra Easy Packages",
-            "item1": "Package 1",
-            "item2": "Package 2",
-            "item3": "Package 3",
-            "item4": "Package 4"
-        }
+        "subHeaders": [
+            "Starter Packages",
+            "Startup Tools",
+            "Ultra Easy Packages"
+        ],
+        "items": [
+            [
+                "Package 1",
+                "Package 2"
+            ],
+            [
+                "Tool 1",
+                "Tool 2",
+                "Tool 3",
+                "Tool 4"
+            ],
+            [
+                "Package 1",
+                "Package 2",
+                "Package 3",
+                "Package 4"
+            ]
+        ]
     }
 }
