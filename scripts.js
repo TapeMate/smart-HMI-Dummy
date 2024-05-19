@@ -45,6 +45,7 @@ const menuItems = document.querySelectorAll(".menu-item");
 // event handler function for main header
 const toggleContent = (e) => {
   const header = e.currentTarget;
+  const icon = header.querySelector("img");
   let sibling = header.nextElementSibling;
   while (sibling && sibling.classList.contains("toggle-sub")) {
     if (sibling.classList.contains("collapse")) {
@@ -56,11 +57,21 @@ const toggleContent = (e) => {
     }
     sibling = sibling.nextElementSibling;
   }
+
+  // rotate toggle icon
+  if (icon.classList.contains("toggle-open")) {
+    icon.classList.remove("toggle-open");
+    icon.classList.add("toggle-closed");
+  } else {
+    icon.classList.remove("toggle-closed");
+    icon.classList.add("toggle-open");
+  }
 };
 
 // event handler function for sub header
 const toggleSubContent = (e) => {
   const subHeader = e.currentTarget;
+  const icon = subHeader.querySelector("img");
   const children = subHeader.querySelectorAll("li");
   children.forEach((child) => {
     if (child.classList.contains("collapse")) {
@@ -71,6 +82,15 @@ const toggleSubContent = (e) => {
       child.classList.add("collapse");
     }
   });
+
+  // rotate toggle icon
+  if (icon.classList.contains("toggle-open")) {
+    icon.classList.remove("toggle-open");
+    icon.classList.add("toggle-closed");
+  } else {
+    icon.classList.remove("toggle-closed");
+    icon.classList.add("toggle-open");
+  }
 };
 
 // media query check to add / remove event listener

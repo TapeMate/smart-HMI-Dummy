@@ -42,6 +42,11 @@ nav .menu-container {
   display: flex;
 }
 
+nav .menu-container div {
+  background-color: #697ba4;
+  margin-right: 10px;
+}
+
 nav #toggle-options,
 nav #toggle-items {
   display: none;
@@ -129,8 +134,8 @@ nav .nav-items ul li a:hover {
 
 /* in dev */
 #toggle-items {
-  background-image: url(assets/toggle-items-closed.svg);
-  background-size: calc(50px - 20%);
+  background-image: url(assets/toggle-nav-items-closed.svg);
+  background-size: calc(50px - 30%);
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -151,8 +156,20 @@ nav .nav-items ul li a:hover {
 }
 
 #content #products .container .toggle {
-  color: blue;
+  color: #697ba4;
 }
+
+/* in dev */
+.toggle-open {
+  transform: rotate(90deg);
+  transition: all 0.3s;
+}
+
+.toggle-closed {
+  transform: rotate(0deg);
+  transition: all 0.3s;
+}
+/* in dev */
 
 #content #products .container .toggle .icon-main,
 #content #products .container ul .icon-secondary {
