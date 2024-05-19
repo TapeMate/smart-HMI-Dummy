@@ -170,6 +170,7 @@ fetch("data.json")
       data.group3.secondary3.header;
 
     // items
+    // group 1
     document.querySelector("#item01").textContent =
       data.group1.secondary1.item1;
     document.querySelector("#item02").textContent =
@@ -193,6 +194,7 @@ fetch("data.json")
     document.querySelector("#item10").textContent =
       data.group1.secondary3.item4;
 
+    // group 2
     document.querySelector("#item11").textContent =
       data.group2.secondary1.item1;
     document.querySelector("#item12").textContent =
@@ -216,6 +218,7 @@ fetch("data.json")
     document.querySelector("#item20").textContent =
       data.group2.secondary3.item4;
 
+    // group 3
     document.querySelector("#item21").textContent =
       data.group3.secondary1.item1;
     document.querySelector("#item22").textContent =

@@ -21,6 +21,32 @@
             "item4": "Package 4"
         }
     },
+    "group1a": {
+        "header": "HMIeasy",
+        "subHeaders": [
+            "Starter Packages",
+            "Startup Tools",
+            "Ultra Easy Packages"
+        ],
+        "items": [
+            [
+                "Package 1",
+                "Package 2"
+            ],
+            [
+                "Tool 1",
+                "Tool 2",
+                "Tool 3",
+                "Tool 4"
+            ],
+            [
+                "Package 1",
+                "Package 2",
+                "Package 3",
+                "Package 4"
+            ]
+        ]
+    },
     "group2": {
         "header": "HMIpro",
         "secondary1": {
