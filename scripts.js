@@ -91,44 +91,27 @@ const toggleEventListener = () => {
   }
 };
 
-// option minimized function to controll initial mobile view with all options collapsed
-// NEEDS REFACTORING!
-const setOptionsMinimized = (bool) => {
-  if (bool === true) {
-    toggleSubHeader.forEach((subHeader) => {
-      subHeader.classList.remove("expand");
-      subHeader.classList.add("collapse");
+// minimizeOption helper function
+const isOptionsMinimized = (elements, firstClass, secondClass, bool) => {
+  if (bool) {
+    elements.forEach((element) => {
+      element.classList.remove(firstClass);
+      element.classList.add(secondClass);
     });
-    menuItems.forEach((item) => {
-      item.classList.remove("expand");
-      item.classList.add("collapse");
-    });
-    iconsMain.forEach((icon) => {
-      icon.classList.remove("toggle-open");
-      icon.classList.add("toggle-closed");
-    });
-    iconsSecondary.forEach((icon) => {
-      icon.classList.remove("toggle-open");
-      icon.classList.add("toggle-closed");
-    });
-  } else if (bool === false) {
-    toggleSubHeader.forEach((subHeader) => {
-      subHeader.classList.remove("collapse");
-      subHeader.classList.add("expand");
-    });
-    menuItems.forEach((item) => {
-      item.classList.remove("collapse");
-      item.classList.add("expand");
-    });
-    iconsMain.forEach((icon) => {
-      icon.classList.remove("toggle-closed");
-      icon.classList.add("toggle-open");
-    });
-    iconsSecondary.forEach((icon) => {
-      icon.classList.remove("toggle-closed");
-      icon.classList.add("toggle-open");
+  } else if (!bool) {
+    elements.forEach((element) => {
+      element.classList.remove(secondClass);
+      element.classList.add(firstClass);
     });
   }
+};
+
+// option minimized function to controll initial mobile view with all options collapsed
+const setOptionsMinimized = (bool) => {
+  isOptionsMinimized(toggleSubHeader, "expand", "collapse", bool);
+  isOptionsMinimized(menuItems, "expand", "collapse", bool);
+  isOptionsMinimized(iconsMain, "toggle-open", "toggle-closed", bool);
+  isOptionsMinimized(iconsSecondary, "toggle-open", "toggle-closed", bool);
 };
 
 // initial check to add event listener
