@@ -145,6 +145,7 @@ fetch("data.json")
   .then((data) => {
     const keysArr = Object.keys(data);
     let subHeaderCount = 1;
+    let itemCount = 1;
 
     // header
     for (let i = 0; i < keysArr.length; i++) {
@@ -163,6 +164,16 @@ fetch("data.json")
     }
 
     // items
+    for (let i = 0; i < keysArr.length; i++) {
+      const itemsArr = data[keysArr[i]].items;
+      itemsArr.forEach((array) => {
+        array.forEach((item) => {
+          document.querySelector(`#item${itemCount}`).textContent = item;
+          itemCount++;
+        });
+      });
+    }
+
     // group 1
     // document.querySelector("#item01").textContent =
     //   data.group1.secondary1.item1;
