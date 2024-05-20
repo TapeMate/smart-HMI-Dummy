@@ -12,11 +12,14 @@ const iconsMain = document.querySelectorAll(".icon-main");
 const iconsSecondary = document.querySelectorAll(".icon-secondary");
 
 // helper function for toggle class
-const toggleClasses = (elements, ...classNames) => {
+const toggleClasses = (elements, removeClass, addClass) => {
   elements.forEach((element) => {
-    classNames.forEach((className) => {
-      element.classList.toggle(className);
-    });
+    if (removeClass) {
+      element.classList.remove(removeClass);
+    }
+    if (addClass) {
+      element.classList.add(addClass);
+    }
   });
 };
 
@@ -61,47 +64,22 @@ toggleOptionsIcon.addEventListener("click", (e) => {
     closeAllOptions();
   } else if (toggleOptionsIcon.classList.contains("options-open")) {
     toggleClasses([toggleOptionsIcon], "options-open", "options-closed");
-
     openAllOptions();
   }
 });
 
 const openAllOptions = () => {
-  toggleSubHeader.forEach((subHeader) => {
-    subHeader.classList.remove("expand");
-    subHeader.classList.add("collapse");
-  });
-  menuItems.forEach((item) => {
-    item.classList.remove("expand");
-    item.classList.add("collapse");
-  });
-  iconsMain.forEach((icon) => {
-    icon.classList.remove("toggle-open");
-    icon.classList.add("toggle-closed");
-  });
-  iconsSecondary.forEach((icon) => {
-    icon.classList.remove("toggle-open");
-    icon.classList.add("toggle-closed");
-  });
+  toggleClasses(toggleSubHeader, "expand", "collapse");
+  toggleClasses(menuItems, "expand", "collapse");
+  toggleClasses(iconsMain, "toggle-open", "toggle-closed");
+  toggleClasses(iconsSecondary, "toggle-open", "toggle-closed");
 };
 
 const closeAllOptions = () => {
-  toggleSubHeader.forEach((subHeader) => {
-    subHeader.classList.remove("collapse");
-    subHeader.classList.add("expand");
-  });
-  menuItems.forEach((item) => {
-    item.classList.remove("collapse");
-    item.classList.add("expand");
-  });
-  iconsMain.forEach((icon) => {
-    icon.classList.remove("toggle-closed");
-    icon.classList.add("toggle-open");
-  });
-  iconsSecondary.forEach((icon) => {
-    icon.classList.remove("toggle-closed");
-    icon.classList.add("toggle-open");
-  });
+  toggleClasses(toggleSubHeader, "collapse", "expand");
+  toggleClasses(menuItems, "collapse", "expand");
+  toggleClasses(iconsMain, "toggle-closed", "toggle-open");
+  toggleClasses(iconsSecondary, "toggle-closed", "toggle-open");
 };
 
 // make mobile product menu expand and collapse
@@ -110,11 +88,13 @@ const toggleMenu = (e) => {
   const icon = header.querySelector("img");
   let sibling = header.nextElementSibling;
   while (sibling && sibling.classList.contains("toggle-sub")) {
-    toggleClasses([sibling], "collapse", "expand");
+    sibling.classList.toggle("collapse");
+    sibling.classList.toggle("expand");
     sibling = sibling.nextElementSibling;
   }
   // rotate toggle icon
-  toggleClasses([icon], "toggle-closed", "toggle-open");
+  icon.classList.toggle("toggle-closed");
+  icon.classList.toggle("toggle-open");
 };
 
 // event handler function for sub header
@@ -122,9 +102,13 @@ const toggleSubMenu = (e) => {
   const subHeader = e.currentTarget;
   const icon = subHeader.querySelector("img");
   const children = subHeader.querySelectorAll("li");
-  toggleClasses(children, "collapse", "expand");
+  children.forEach((child) => {
+    child.classList.toggle("collapse");
+    child.classList.toggle("expand");
+  });
   // rotate toggle icon
-  toggleClasses([icon], "toggle-closed", "toggle-open");
+  icon.classList.toggle("toggle-closed");
+  icon.classList.toggle("toggle-open");
 };
 
 // media query check to add / remove event listener
@@ -148,8 +132,12 @@ const toggleEventListener = () => {
   }
 };
 
-// option minimized function to controll initial mobile view with all options collapsed
+// option minimized function to control initial mobile view with all options collapsed
 const setOptionsMinimized = (bool) => {
+  if (toggleOptionsIcon.classList.contains("options-open")) {
+    toggleOptionsIcon.classList.remove("options-open");
+    toggleOptionsIcon.classList.add("options-closed");
+  }
   isOptionsMinimized(toggleSubHeader, "expand", "collapse", bool);
   isOptionsMinimized(menuItems, "expand", "collapse", bool);
   isOptionsMinimized(iconsMain, "toggle-open", "toggle-closed", bool);
