@@ -45,6 +45,7 @@ navItems.forEach((navItem) => {
     navItems.forEach((item) => item.classList.remove("active"));
     navItem.classList.add("active");
     // check viewport if in mobile view, close link container again on select link
+    // also adds open close icon graphic to navbar element
     if (window.matchMedia("(max-width: 550px)").matches) {
       toggleClasses([navItemContainer], "open", "close");
       toggleClasses([toggleItemsIcon], "items-open", "items-closed");
