@@ -1,6 +1,6 @@
 "use strict";
 
-// DOM Objects:
+// DOM OBJECTS:
 const navItems = document.querySelectorAll(".nav-link");
 const toggleItemsIcon = document.querySelector("#toggle-items");
 const navItemContainer = document.querySelector(".nav-items");
@@ -11,6 +11,7 @@ const menuItems = document.querySelectorAll(".menu-item");
 const iconsMain = document.querySelectorAll(".icon-main");
 const iconsSecondary = document.querySelectorAll(".icon-secondary");
 
+// HELPER FUNCTIONS:
 // helper function for toggle class
 const toggleClasses = (elements, removeClass, addClass) => {
   elements.forEach((element) => {
@@ -23,7 +24,7 @@ const toggleClasses = (elements, removeClass, addClass) => {
   });
 };
 
-// minimizeOption helper function
+// helper function minimizeOption
 const isOptionsMinimized = (elements, firstClass, secondClass, bool) => {
   if (bool) {
     elements.forEach((element) => {
@@ -43,10 +44,10 @@ navItems.forEach((navItem) => {
   navItem.addEventListener("click", (e) => {
     navItems.forEach((item) => item.classList.remove("active"));
     navItem.classList.add("active");
-    // check viewport if in mobile view, if so close link container again on select
+    // check viewport if in mobile view, close link container again on select link
     if (window.matchMedia("(max-width: 550px)").matches) {
-      navItemContainer.classList.remove("open");
-      navItemContainer.classList.add("close");
+      toggleClasses([navItemContainer], "open", "close");
+      toggleClasses([toggleItemsIcon], "items-open", "items-closed");
     }
   });
 });
@@ -55,6 +56,7 @@ navItems.forEach((navItem) => {
 toggleItemsIcon.addEventListener("click", () => {
   // needs "[ ]" to pack single Node into Array to fit helper function
   toggleClasses([navItemContainer], "close", "open");
+  toggleClasses([toggleItemsIcon], "items-closed", "items-open");
 });
 
 // add expand / collapse all items function to mobile menu icon

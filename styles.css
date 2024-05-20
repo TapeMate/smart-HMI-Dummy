@@ -42,22 +42,10 @@ nav .menu-container {
   display: flex;
 }
 
-nav .menu-container div {
-  background-color: #697ba4;
-  margin-right: 10px;
-}
-
 nav #toggle-options,
 nav #toggle-items {
   display: none;
 }
-
-/* nav #toggle-options img,
-nav #toggle-items img {
-  height: 30px;
-  width: 30px;
-  margin: 10px;
-} */
 
 nav .nav-items ul li a {
   display: block;
@@ -70,7 +58,6 @@ nav .nav-items ul li a:hover {
   background-color: #111;
 }
 
-/* active link class for JavaScript */
 .active {
   background-color: #111;
 }
@@ -86,7 +73,7 @@ nav .nav-items ul li a:hover {
 #content section {
   position: absolute;
   z-index: -1;
-  top: -300px; /* pixelvalue should be replaced in production for more dynamic behaviour -> same in animation */
+  top: -300px;
   left: 0;
   visibility: hidden;
   overflow: hidden;
@@ -106,7 +93,6 @@ nav .nav-items ul li a:hover {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-/* dummy animation for testing */
 @keyframes slideIn {
   0% {
     visibility: visible;
@@ -132,21 +118,41 @@ nav .nav-items ul li a:hover {
   transition: all 0.5s;
 }
 
-/* in dev */
-#toggle-items {
+.items-closed {
   background-image: url(assets/toggle-nav-items-closed.svg);
   background-size: calc(50px - 30%);
   background-repeat: no-repeat;
   background-position: center;
+  background-color: #697ba4;
+  margin-right: 10px;
 }
 
-#toggle-options {
+.items-open {
+  background-image: url(assets/toggle-nav-items-open.svg);
+  background-size: calc(50px - 30%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+  margin-right: 10px;
+}
+
+.options-closed {
   background-image: url(assets/toggle-all-options-closed.svg);
   background-size: calc(50px - 30%);
   background-repeat: no-repeat;
   background-position: center;
+  background-color: #697ba4;
+  margin-right: 10px;
 }
-/* in dev */
+
+.options-open {
+  background-image: url(assets/toggle-all-options-open.svg);
+  background-size: calc(50px - 30%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+  margin-right: 10px;
+}
 
 #content #products .container {
   display: flex;
@@ -159,7 +165,6 @@ nav .nav-items ul li a:hover {
   color: #697ba4;
 }
 
-/* in dev */
 .toggle-open {
   transform: rotate(90deg);
   transition: all 0.3s;
@@ -169,7 +174,6 @@ nav .nav-items ul li a:hover {
   transform: rotate(0deg);
   transition: all 0.3s;
 }
-/* in dev */
 
 #content #products .container .toggle .icon-main,
 #content #products .container ul .icon-secondary {
@@ -192,9 +196,6 @@ nav .nav-items ul li a:hover {
     flex-direction: column;
   }
 
-  /* nav .nav-items ul li {
-  } */
-
   nav .nav-items ul li a {
     padding: 5px;
     height: 20px;
@@ -209,11 +210,6 @@ nav .nav-items ul li a:hover {
     justify-content: flex-start;
     align-items: center;
   }
-
-  /* nav #toggle-options:hover img,
-  nav #toggle-items:hover img {
-    background: red;
-  } */
 
   #content #products {
     grid-template-columns: 1fr;
