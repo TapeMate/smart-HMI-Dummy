@@ -56,11 +56,53 @@ toggleItemsIcon.addEventListener("click", () => {
 
 // add expand / collapse all items function to mobile menu icon
 toggleOptionsIcon.addEventListener("click", (e) => {
-  toggleClasses(toggleSubHeader, "expand", "collapse");
-  toggleClasses(menuItems, "expand", "collapse");
-  toggleClasses(iconsMain, "toggle-closed", "toggle-open");
-  toggleClasses(iconsSecondary, "toggle-closed", "toggle-open");
+  if (toggleOptionsIcon.classList.contains("options-closed")) {
+    toggleClasses([toggleOptionsIcon], "options-closed", "options-open");
+    closeAllOptions();
+  } else if (toggleOptionsIcon.classList.contains("options-open")) {
+    toggleClasses([toggleOptionsIcon], "options-open", "options-closed");
+
+    openAllOptions();
+  }
 });
+
+const openAllOptions = () => {
+  toggleSubHeader.forEach((subHeader) => {
+    subHeader.classList.remove("expand");
+    subHeader.classList.add("collapse");
+  });
+  menuItems.forEach((item) => {
+    item.classList.remove("expand");
+    item.classList.add("collapse");
+  });
+  iconsMain.forEach((icon) => {
+    icon.classList.remove("toggle-open");
+    icon.classList.add("toggle-closed");
+  });
+  iconsSecondary.forEach((icon) => {
+    icon.classList.remove("toggle-open");
+    icon.classList.add("toggle-closed");
+  });
+};
+
+const closeAllOptions = () => {
+  toggleSubHeader.forEach((subHeader) => {
+    subHeader.classList.remove("collapse");
+    subHeader.classList.add("expand");
+  });
+  menuItems.forEach((item) => {
+    item.classList.remove("collapse");
+    item.classList.add("expand");
+  });
+  iconsMain.forEach((icon) => {
+    icon.classList.remove("toggle-closed");
+    icon.classList.add("toggle-open");
+  });
+  iconsSecondary.forEach((icon) => {
+    icon.classList.remove("toggle-closed");
+    icon.classList.add("toggle-open");
+  });
+};
 
 // make mobile product menu expand and collapse
 const toggleMenu = (e) => {
