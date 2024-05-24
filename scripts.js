@@ -1,15 +1,18 @@
 "use strict";
 
-// DOM OBJECTS:
-const navItems = document.querySelectorAll(".nav-link");
+// STATIC DOM OBJECTS:
+let navItems = document.querySelectorAll(".nav-link");
 const toggleItemsIcon = document.querySelector("#toggle-items");
-const navItemContainer = document.querySelector(".nav-items");
+let navItemContainer = document.querySelector(".nav-items");
 const toggleOptionsIcon = document.querySelector("#toggle-options");
-const toggleHeader = document.querySelectorAll(".toggle");
-const toggleSubHeader = document.querySelectorAll(".toggle-sub");
-const menuItems = document.querySelectorAll(".menu-item");
-const iconsMain = document.querySelectorAll(".icon-main");
-const iconsSecondary = document.querySelectorAll(".icon-secondary");
+
+// DYNAMIC DOM OBJECTS:
+// important to use let; initial assignment to assure functions still working
+let toggleHeader = document.querySelectorAll(".toggle");
+let toggleSubHeader = document.querySelectorAll(".toggle-sub");
+let menuItems = document.querySelectorAll(".menu-item");
+let iconsMain = document.querySelectorAll(".icon-main");
+let iconsSecondary = document.querySelectorAll(".icon-secondary");
 
 // HELPER FUNCTIONS:
 // helper function for toggle class
@@ -169,9 +172,11 @@ mediaQuery.addEventListener("change", mediaQueryCheck);
 // initial check
 mediaQueryCheck(mediaQuery);
 
-// ################
-// FETCH JSON DATA
-// ################
+// #######################################
+// FETCH JSON DATA & RENDER MOBILE MENU
+// #######################################
+
+const productsMenu = document.querySelector("#products");
 
 fetch("data.json")
   .then((response) => response.json())
@@ -180,26 +185,74 @@ fetch("data.json")
     let subHeaderCount = 1;
     let itemCount = 1;
 
-    // header
+    let subHeaderRenderCount = 1;
+    let itemRenderCount = 1;
+
     for (let i = 0; i < keysArr.length; i++) {
       const subHeadersArr = data[keysArr[i]].subHeaders;
       const itemsArr = data[keysArr[i]].items;
+
       // header
-      document.querySelector(`#header${i + 1}`).textContent =
-        data[keysArr[i]].header;
+      const container = document.createElement("div");
+      container.classList.add("container");
+      productsMenu.appendChild(container);
+
+      const toggleHeader = document.createElement("h3");
+      toggleHeader.classList.add("toggle");
+      container.appendChild(toggleHeader);
+
+      const iconMain = document.createElement("img");
+      iconMain.classList.add("icon-main", "toggle-closed");
+      iconMain.src = "assets/toggle-option-blue.svg";
+      iconMain.alt = "option";
+      toggleHeader.appendChild(iconMain);
+
+      const header = document.createElement("span");
+      header.id = `header${i + 1}`;
+      header.textContent = data[keysArr[i]].header;
+      toggleHeader.appendChild(header);
+
       // subHeader
-      subHeadersArr.forEach((subHeader) => {
-        document.querySelector(`#sub-header${subHeaderCount}`).textContent =
-          subHeader;
-        subHeaderCount++;
-      });
-      // items
-      itemsArr.forEach((array) => {
-        array.forEach((item) => {
-          document.querySelector(`#item${itemCount}`).textContent = item;
-          itemCount++;
+      subHeadersArr.forEach((subHeader, index) => {
+        const toggleSubHeader = document.createElement("ul");
+        toggleSubHeader.classList.add("toggle-sub");
+        container.appendChild(toggleSubHeader);
+
+        const div = document.createElement("div");
+        toggleSubHeader.appendChild(div);
+
+        const iconSecondary = document.createElement("img");
+        iconSecondary.classList.add("icon-secondary", "toggle-closed");
+        iconSecondary.src = "assets/toggle-option-black.svg";
+        iconSecondary.alt = "option";
+        div.appendChild(iconSecondary);
+
+        const subHeaderElement = document.createElement("span");
+        subHeaderElement.id = `sub-header${subHeaderRenderCount}`;
+        div.appendChild(subHeaderElement);
+        subHeaderRenderCount++;
+        subHeaderElement.textContent = subHeader;
+
+        // items
+        itemsArr[index].forEach((item) => {
+          const listItem = document.createElement("li");
+          listItem.classList.add("menu-item");
+          listItem.id = `item${itemRenderCount}`;
+          listItem.textContent = item;
+          toggleSubHeader.appendChild(listItem);
+          itemRenderCount++;
         });
       });
     }
+
+    // Reassign dynamic DOM Objects to asure animations still work
+    toggleHeader = document.querySelectorAll(".toggle");
+    toggleSubHeader = document.querySelectorAll(".toggle-sub");
+    menuItems = document.querySelectorAll(".menu-item");
+    iconsMain = document.querySelectorAll(".icon-main");
+    iconsSecondary = document.querySelectorAll(".icon-secondary");
+
+    // Reattach the event listener
+    toggleEventListener();
   })
   .catch((error) => console.error("Error fetching data:", error));
